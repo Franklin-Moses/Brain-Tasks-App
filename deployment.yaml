@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: 074478994008.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
+          image: 074478994008.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
           ports:
             - containerPort: 8080
