@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - "curl -Lo kubectl https://dl.k8s.io/release/v1.34.0/bin/linux/amd64/kubectl"
+      - "chmod +x kubectl"
+      - "mv kubectl /usr/local/bin/kubectl"
+      - "kubectl version --client"
+
+  pre_build:
+    commands:
+      - "aws eks update-kubeconfig --region ap-south-1 --name baby-eks-cluster"
+      - "kubectl config current-context"
+
+  build:
+    commands:
+      - "kubectl apply -f deployment.yaml"
+      - "kubectl apply -f service.yaml"
+      - "kubectl rollout status deployment/my-app --timeout=5m"
+      - "kubectl get pods"
+      - "kubectl get service my-app-service"
