@@ -157,7 +157,7 @@ git init
 git add .
 git commit -m "Initial DevOps implementation"
 git branch -M main
-git remote add origin https://github.com/Vennilavanguvi/Brain-Tasks-App.git
+git remote add origin https://github.com/Franklin-Moses/Brain-Tasks-App.git
 git push -u origin main
 The repository contains the required deployment files such as:
 Dockerfile
