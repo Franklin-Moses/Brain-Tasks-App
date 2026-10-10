@@ -203,7 +203,20 @@ kubectl get pods
 kubectl logs <POD_NAME>
 CloudWatch Logs were checked to verify successful build and deployment activities.
 
-11. Validation
+12. Kubernetes Deployment and AWS LoadBalancer
+The Brain Tasks application was deployed to Amazon EKS using Kubernetes Deployment and Service manifests.
+
+EKS Cluster: brain-tasks-eks
+Kubernetes Deployment: my-app
+Replicas: 2
+Kubernetes Service: my-app-service
+Service Type: LoadBalancer
+Service Port: 3000
+Container Target Port: 80
+
+AWS provisioned an external LoadBalancer DNS endpoint for accessing the application. The Kubernetes Service forwards requests received on port 3000 to port 80 on the application containers.
+
+13. Validation
 The following checks were completed successfully:
 Component	Validation
 GitHub	Source code pushed
@@ -218,6 +231,6 @@ CodeBuild	Build completed successfully
 CodePipeline	Pipeline execution completed
 CloudWatch	Logs available
 
-12. Conclusion
+13. Conclusion
 The Brain Tasks Application was successfully containerized using Docker and deployed on Amazon EKS. The complete CI/CD workflow was implemented using GitHub, AWS CodeBuild, Amazon ECR, and AWS CodePipeline. Kubernetes was used for application deployment and service exposure, while CloudWatch was used for monitoring and log verification.
 This POC demonstrates an end-to-end GitHub → CodePipeline → CodeBuild → ECR → EKS → Application deployment workflow.
